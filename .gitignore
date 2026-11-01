@@ -1,0 +1,12 @@
+# Dependencies & temporary scratch
+scratch/
+__pycache__/
+*.pyc
+
+# Local backups & temporary debug files
+*.bak*
+test_tab2_view.html
+
+# OS metadata
+.DS_Store
+Thumbs.db
