@@ -2199,10 +2199,10 @@
       border: 1px solid #FCA5A5;
     }
 
-    /* Print Stylesheet */
+    /* Print Stylesheet Chuẩn Nam A Bank: In duy nhất biểu mẫu A4 BM-HCQT.ĐCTS.02 */
     @page {
       size: A4 portrait;
-      margin: 15mm 12mm 15mm 12mm;
+      margin: 10mm 12mm 10mm 12mm;
     }
 
     @media print {
@@ -2212,43 +2212,147 @@
         font-family: 'Times New Roman', Times, serif !important;
         margin: 0 !important;
         padding: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
       }
 
+      /* 1. ẨN TOÀN BỘ KHUNG SHELL, HEADER HỆ THỐNG VÀ THANH ĐIỀU HƯỚNG 6 TABS */
+      #homePosterView,
+      .workspace-top-header,
+      .workspace-horizontal-tabs-nav,
       .dashboard-layout-2col,
       .preview-sticky-toolbar,
+      .preview-config-box,
       .preview-config-wrapper,
+      .minute-action-toolbar,
+      .saas-card-header,
+      .a4-mobile-scroll-tip,
+      .staging-alert-banner,
       #toastContainer,
       .modal-overlay,
-      .minute-watermark-ribbon {
+      .minute-watermark-ribbon,
+      .table-pagination-footer,
+      .bulk-operation-panel,
+      .search-filter-bar,
+      #txtTabTitle,
+      #txtTabDesc,
+      .btn,
+      button {
         display: none !important;
       }
 
+      /* 2. ẨN TẤT CẢ CÁC TAB KHÁC NGOẠI TRỪ TAB 3 (BIÊN BẢN ĐIỀU CHUYỂN) */
+      #pane-tab-search,
+      #pane-tab-transfer,
+      #pane-tab-import,
+      #pane-tab-qrcode {
+        display: none !important;
+      }
+
+      #pane-tab-report {
+        display: none !important;
+      }
+
+      /* Cho phép in báo cáo điều chuyển Tab 5 nếu được kích hoạt từ nút In báo cáo */
+      body.print-from-report #pane-tab-minute {
+        display: none !important;
+      }
+      body.print-from-report #pane-tab-report {
+        display: block !important;
+        background: transparent !important;
+        border: none !important;
+      }
+      body.print-from-report #pane-tab-report .saas-card {
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      /* 3. TẨY BỎ TOÀN BỘ ĐỔ BÓNG, VIỀN VÀ MÀU NỀN CỦA SAAS-CARD KHI IN TAB 3 */
+      #internalWorkspaceView,
+      .internal-workspace-view,
+      .workspace-main-content,
+      #pane-tab-minute,
+      #pane-tab-minute.active,
+      #pane-tab-minute .saas-card,
+      #pane-tab-minute .saas-card-body,
+      .a4-print-sheet-wrapper {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        overflow: visible !important;
+        display: block !important;
+      }
+
+      /* 4. ĐIỀU HƯỚNG GIỮA IN TẠI TAB 3 (INLINE) HOẶC MODAL XEM TRƯỚC */
       #previewView {
+        display: none !important;
+      }
+
+      body.print-from-modal #internalWorkspaceView {
+        display: none !important;
+      }
+
+      body.print-from-modal #previewView {
         display: block !important;
         position: static !important;
         background: #FFFFFF !important;
-        overflow: visible !important;
-        inset: auto !important;
         padding: 0 !important;
         margin: 0 !important;
+        inset: auto !important;
+        overflow: visible !important;
       }
 
-      .a4-print-sheet-wrapper {
+      /* 5. ĐỊNH DẠNG TỜ A4 CHUẨN NAM A BANK KHỚP 100% BIỂU MẪU BM-HCQT.ĐCTS.02 */
+      .a4-sheet,
+      .nab-a4-sheet,
+      #a4PrintSheetInline,
+      #a4PrintSheetModal {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
         padding: 0 !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        font-family: 'Times New Roman', Times, serif !important;
+      }
+
+      .nab-header-grid {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        margin-bottom: 20px !important;
+        gap: 14px !important;
+      }
+
+      .nab-logo-img {
+        max-width: 175px !important;
+        height: auto !important;
         display: block !important;
       }
 
-      .a4-sheet, .nab-a4-sheet {
+      table.nab-a4-table, table.a4-table {
         width: 100% !important;
-        min-height: auto !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        box-shadow: none !important;
-        border: none !important;
+        border-collapse: collapse !important;
       }
 
-      table.nab-a4-table thead, table.a4-table thead { display: table-header-group !important; }
+      table.nab-a4-table th, table.nab-a4-table td,
+      table.a4-table th, table.a4-table td {
+        border: 1px solid #000000 !important;
+        color: #000000 !important;
+        font-family: 'Times New Roman', Times, serif !important;
+      }
+
+      table.nab-a4-table thead, table.a4-table thead {
+        display: table-header-group !important;
+      }
+
       table.nab-a4-table tr, table.a4-table tr,
       .nab-signatures-block, .a4-signatures-block,
       .nab-party-block, .parties-section {
@@ -9858,23 +9962,49 @@
     $('#btnMainPrint').addEventListener('click', () => {
       if (selectedAssets.size === 0) return showToast('Vui lòng chọn ít nhất 01 tài sản trước khi in!', 'warning');
       updateA4Document();
+      document.body.classList.add('print-mode-a4-minute');
       window.print();
+      setTimeout(() => { document.body.classList.remove('print-mode-a4-minute'); }, 1000);
     });
 
     $('#btnPrintA4').addEventListener('click', () => {
+      document.body.classList.add('print-from-modal');
       window.print();
+      setTimeout(() => { document.body.classList.remove('print-from-modal'); }, 1000);
     });
 
     $('#btnMainPdf').addEventListener('click', () => {
       if (selectedAssets.size === 0) return showToast('Vui lòng chọn ít nhất 01 tài sản trước khi lưu PDF!', 'warning');
       updateA4Document();
+      document.body.classList.add('print-mode-a4-minute');
       showToast('Trong hộp thoại in, tại mục "Máy in" (Destination), vui lòng chọn "Lưu dưới dạng PDF" (Save as PDF).', 'info', 5000);
-      setTimeout(() => { window.print(); }, 700);
+      setTimeout(() => {
+        window.print();
+        setTimeout(() => { document.body.classList.remove('print-mode-a4-minute'); }, 1000);
+      }, 700);
     });
 
     $('#btnSavePdf').addEventListener('click', () => {
+      document.body.classList.add('print-from-modal');
       showToast('Trong hộp thoại in tiếp theo, vui lòng chọn "Lưu dưới dạng PDF" (Save as PDF).', 'info', 5000);
-      setTimeout(() => { window.print(); }, 700);
+      setTimeout(() => {
+        window.print();
+        setTimeout(() => { document.body.classList.remove('print-from-modal'); }, 1000);
+      }, 700);
+    });
+
+    // Window print lifecycle hooks (handles both button clicks and Ctrl+P shortcut)
+    window.addEventListener('beforeprint', () => {
+      const previewModal = document.getElementById('previewView');
+      if (previewModal && previewModal.style.display === 'block') {
+        document.body.classList.add('print-from-modal');
+      }
+    });
+
+    window.addEventListener('afterprint', () => {
+      document.body.classList.remove('print-from-modal');
+      document.body.classList.remove('print-mode-a4-minute');
+      document.body.classList.remove('print-from-report');
     });
 
     function openPreviewInNewTab() {
@@ -11046,7 +11176,9 @@
 
     // Print
     $('#btnRptPrint').addEventListener('click', () => {
+      document.body.classList.add('print-from-report');
       window.print();
+      setTimeout(() => { document.body.classList.remove('print-from-report'); }, 1000);
     });
 
     // Reset samples & Clear
