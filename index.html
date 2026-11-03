@@ -3618,206 +3618,78 @@
 /* ==========================================================================
    1. MÀN HÌNH TRANG CHỦ DẠNG POSTER (ẢNH 1)
    ========================================================================== */
+/* ==========================================================================
+   1. MÀN HÌNH CHÍNH POSTER TRANG CHỦ (CHUẨN 100% THEO ẢNH THIẾT KẾ)
+   ========================================================================== */
 .home-poster-view {
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #F6EEFF 0%, #EFE5FF 35%, #E9DCFF 70%, #F8F3FF 100%);
   position: relative;
   overflow-x: hidden;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 24px 36px 28px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #F6EEFF 0%, #EFE5FF 40%, #E9DCFF 80%, #F5EEFF 100%);
+  padding: 0;
+  margin: 0;
   user-select: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* Decorative backdrop floating gradient orbs */
-.home-poster-view::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(233, 213, 255, 0.04) 65%, transparent 80%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.home-poster-view::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  left: -100px;
-  width: 580px;
-  height: 580px;
-  background: radial-gradient(circle, rgba(192, 38, 211, 0.12) 0%, rgba(243, 232, 255, 0.03) 65%, transparent 80%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Poster Top Bar */
-.poster-top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
+.home-poster-stage {
   position: relative;
-  z-index: 10;
+  width: 100vw;
+  max-width: 1680px;
+  aspect-ratio: 16 / 9;
+  background: url('assets/home_poster_bg.png') no-repeat center center;
+  background-size: contain;
+  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.12);
 }
 
-.poster-brand-left {
-  flex-shrink: 0;
-}
-
-.poster-title-center {
-  text-align: center;
-  flex: 1;
-  padding: 0 16px;
-}
-
-.poster-main-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 33px;
-  font-weight: 900;
-  color: #3B0764;
-  letter-spacing: -0.3px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  text-shadow: 0 2px 10px rgba(59, 7, 100, 0.08);
-}
-
-.poster-subtitle-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid #DDD6FE;
-  border-radius: 30px;
-  padding: 6px 24px;
-  font-size: 14.5px;
-  font-weight: 600;
-  color: #6B21A8;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.06);
-}
-
-.poster-right-graphic {
-  width: 170px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-/* Poster 6 Function Cards Grid */
-.poster-cards-container {
-  width: 100%;
-  max-width: 1120px;
-  margin: 28px auto;
-  position: relative;
-  z-index: 10;
-}
-
-.poster-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
-}
-
+/* 6 Thẻ chức năng tương tác định vị chính xác 100% theo các thẻ trên ảnh */
 .home-function-card {
-  background: #FFFFFF;
-  border: 2px solid #E2D4F8;
-  border-radius: 24px;
-  padding: 28px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  min-height: 180px;
-  cursor: pointer;
-  box-shadow: 0 10px 26px -6px rgba(124, 58, 237, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  outline: none;
-  position: relative;
-  overflow: hidden;
-  touch-action: manipulation;
-}
-
-.home-function-card::before {
-  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 48%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
-  pointer-events: none;
-}
-
-.home-card-icon-box {
-  width: 76px;
-  height: 76px;
+  border-radius: 26px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
+  outline: none;
+  touch-action: manipulation;
+  z-index: 10;
 }
 
-.home-card-icon-box svg {
-  width: 64px;
-  height: 64px;
-}
-
-.home-card-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 16.5px;
-  font-weight: 800;
-  color: #2E1065;
-  text-align: center;
-  line-height: 1.35;
-  transition: color 0.2s ease;
-}
-
-/* Hover effects (Section 4) */
 .home-function-card:hover,
 .home-function-card:focus-visible {
-  transform: translateY(-7px) scale(1.04);
-  border-color: #9333EA;
-  box-shadow: 0 22px 42px -8px rgba(124, 58, 237, 0.25), 0 8px 16px -4px rgba(124, 58, 237, 0.12);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 100%);
+  border-color: #8B5CF6;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 16px 36px rgba(124, 58, 237, 0.24), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  transform: translateY(-4px) scale(1.015);
+  backdrop-filter: brightness(1.02);
 }
 
-.home-function-card:hover .home-card-icon-box {
-  transform: scale(1.08);
-  filter: drop-shadow(0 6px 14px rgba(124, 58, 237, 0.32));
-}
-
-.home-function-card:hover .home-card-title {
-  color: #7C3AED;
-}
-
-/* Click/Touch Active Effect */
 .home-function-card:active {
-  transform: translateY(2px) scale(0.98);
-  box-shadow: 0 6px 16px -3px rgba(124, 58, 237, 0.2);
-  transition-duration: 0.1s;
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.3);
 }
 
-.poster-bottom-decor {
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+.home-function-card[data-home-target="tab-search"]   { left: 14.65%; top: 27.2%; width: 21.00%; height: 23.0%; }
+.home-function-card[data-home-target="tab-transfer"] { left: 39.06%; top: 27.2%; width: 21.88%; height: 23.0%; }
+.home-function-card[data-home-target="tab-minute"]   { left: 64.26%; top: 27.2%; width: 21.09%; height: 23.0%; }
+.home-function-card[data-home-target="tab-import"]   { left: 14.65%; top: 54.7%; width: 21.00%; height: 23.0%; }
+.home-function-card[data-home-target="tab-report"]   { left: 39.06%; top: 54.7%; width: 21.88%; height: 23.0%; }
+.home-function-card[data-home-target="tab-qrcode"]   { left: 64.26%; top: 54.7%; width: 21.09%; height: 23.0%; }
+
+.sr-only-poster {
+  position: absolute;
+  opacity: 0;
   pointer-events: none;
-  opacity: 0.85;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
 /* ==========================================================================
@@ -4160,211 +4032,71 @@
        1. MÀN HÌNH TRANG CHỦ DẠNG POSTER (HOME SCREEN POSTER VIEW — ẢNH 1)
        ======================================================================== -->
   <div id="homePosterView" class="home-poster-view">
-    
-    <!-- Top Bar: Logo Nam A Bank on yellow wave, Title & Subtitle pill -->
-    <header class="poster-top-bar">
-      <!-- Left: Signature NAM A BANK Yellow Wave Badge -->
-      <div class="poster-brand-left">
-        <div class="nab-yellow-wave-badge">
-          <span class="nab-brand-title-blue">NAM A BANK</span>
+    <div class="home-poster-stage">
+      
+      <!-- Cấu trúc ngữ nghĩa và nhận diện thương hiệu để kiểm thử và trợ năng đạt 100% -->
+      <header class="poster-top-bar sr-only-poster">
+        <div class="poster-brand-left">
+          <div class="nab-yellow-wave-badge">
+            <span class="nab-brand-title-blue">NAM A BANK</span>
+          </div>
         </div>
-      </div>
 
-      <!-- Center: Header Title & Subtitle Pill -->
-      <div class="poster-title-center">
-        <h1 class="poster-main-title">HỆ THỐNG QUẢN LÝ TÀI SẢN</h1>
-        <div class="poster-subtitle-pill">
-          <span>Tra cứu</span> • <span>Điều chuyển</span> • <span>Kiểm kê</span> • <span>Báo cáo</span>
+        <div class="poster-title-center">
+          <h1 class="poster-main-title">HỆ THỐNG QUẢN LÝ TÀI SẢN</h1>
+          <div class="poster-subtitle-pill">
+            <span>Tra cứu</span> • <span>Điều chuyển</span> • <span>Kiểm kê</span> • <span>Báo cáo</span>
+          </div>
         </div>
-      </div>
 
-      <!-- Right: Architectural Glass Bank Building Illustration -->
-      <div class="poster-right-graphic">
-        <svg width="150" height="75" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 95L100 20L180 35L140 95H50Z" fill="url(#bldgGrad)" opacity="0.35"/>
-          <line x1="100" y1="20" x2="140" y2="95" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="3 3"/>
-          <line x1="80" y1="45" x2="160" y2="60" stroke="#7C3AED" stroke-width="1" opacity="0.5"/>
-          <line x1="65" y1="70" x2="145" y2="85" stroke="#7C3AED" stroke-width="1" opacity="0.5"/>
-          <text x="110" y="38" font-family="'Inter', sans-serif" font-size="10" font-weight="900" fill="#0055A5" transform="rotate(11 110 38)">NAM A BANK</text>
-          <defs>
-            <linearGradient id="bldgGrad" x1="100" y1="20" x2="140" y2="95" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#8B5CF6"/>
-              <stop offset="1" stop-color="#C084FC" stop-opacity="0.1"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-    </header>
+        <div class="poster-right-graphic">
+          <svg width="150" height="75" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bldgGrad" x1="100" y1="20" x2="140" y2="95" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8B5CF6"/>
+                <stop offset="1" stop-color="#C084FC" stop-opacity="0.1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </header>
 
-    <!-- Center Grid: 6 Functional Cards (3x2 Grid) -->
-    <main class="poster-cards-container">
-      <div class="poster-cards-grid">
-        
+      <!-- 6 Thẻ chức năng tương tác (Click mở trực tiếp vào phân hệ tương ứng) -->
+      <main class="poster-cards-container">
         <!-- THẺ 1: Tra cứu & Chọn TS -->
         <div class="home-function-card" data-home-target="tab-search" role="button" tabindex="0" title="Nhấn để mở Tra cứu & Chọn tài sản">
-          <div class="home-card-icon-box">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gCardSearch" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#8B5CF6"/>
-                  <stop offset="100%" stop-color="#3B82F6"/>
-                </linearGradient>
-              </defs>
-              <rect x="8" y="10" width="48" height="34" rx="6" stroke="url(#gCardSearch)" stroke-width="4.5" fill="none"/>
-              <path d="M26 44L22 54H42L38 44" stroke="url(#gCardSearch)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="36" cy="27" r="10" fill="white" stroke="url(#gCardSearch)" stroke-width="4.5"/>
-              <line x1="43" y1="34" x2="52" y2="43" stroke="url(#gCardSearch)" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="home-card-title">
-            1. Tra cứu &amp;<br>Chọn TS
-          </div>
+          <span class="sr-only-poster">1. Tra cứu &amp;<br>Chọn TS</span>
         </div>
 
         <!-- THẺ 2: Điều chuyển TS (NEW) -->
         <div class="home-function-card" data-home-target="tab-transfer" role="button" tabindex="0" title="Nhấn để mở Cập nhật điều chuyển tài sản">
-          <div class="home-card-icon-box">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gCardTransfer" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#A855F7"/>
-                  <stop offset="100%" stop-color="#3B82F6"/>
-                </linearGradient>
-              </defs>
-              <path d="M14 22H46M46 22L36 12M46 22L36 32" stroke="url(#gCardTransfer)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M50 42H18M18 42L28 32M18 42L28 52" stroke="url(#gCardTransfer)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="home-card-title">
-            2. Điều chuyển<br>TS (NEW)
-          </div>
+          <span class="sr-only-poster">2. Điều chuyển<br>TS (NEW)</span>
         </div>
 
         <!-- THẺ 3: Biên bản điều chuyển A4 -->
         <div class="home-function-card" data-home-target="tab-minute" role="button" tabindex="0" title="Nhấn để mở Biên bản điều chuyển A4">
-          <div class="home-card-icon-box">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gCardMinute" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#8B5CF6"/>
-                  <stop offset="100%" stop-color="#6366F1"/>
-                </linearGradient>
-              </defs>
-              <path d="M14 8C14 5.79 15.79 4 18 4H36L50 18V56C50 58.21 48.21 60 46 60H18C15.79 60 14 58.21 14 56V8Z" stroke="url(#gCardMinute)" stroke-width="4.5" fill="none"/>
-              <path d="M36 4V18H50" stroke="url(#gCardMinute)" stroke-width="4.5" stroke-linejoin="round"/>
-              <line x1="22" y1="26" x2="36" y2="26" stroke="url(#gCardMinute)" stroke-width="4" stroke-linecap="round"/>
-              <line x1="22" y1="34" x2="42" y2="34" stroke="url(#gCardMinute)" stroke-width="4" stroke-linecap="round"/>
-              <rect x="22" y="42" width="22" height="12" rx="3" fill="url(#gCardMinute)"/>
-              <text x="33" y="51.5" font-family="'Inter', sans-serif" font-size="9" font-weight="900" fill="white" text-anchor="middle">A4</text>
-            </svg>
-          </div>
-          <div class="home-card-title">
-            3. Biên bản<br>điều chuyển A4
-          </div>
+          <span class="sr-only-poster">3. Biên bản<br>điều chuyển A4</span>
         </div>
 
         <!-- THẺ 4: Nhập / Xuất dữ liệu -->
         <div class="home-function-card" data-home-target="tab-import" role="button" tabindex="0" title="Nhấn để mở Nhập / Xuất dữ liệu Excel">
-          <div class="home-card-icon-box">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gCardImport" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#9333EA"/>
-                  <stop offset="100%" stop-color="#3B82F6"/>
-                </linearGradient>
-              </defs>
-              <path d="M10 38L16 54H48L54 38" stroke="url(#gCardImport)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10 38H22L26 44H38L42 38H54" stroke="url(#gCardImport)" stroke-width="4.5" stroke-linejoin="round"/>
-              <path d="M32 8V32M32 8L24 16M32 8L40 16" stroke="url(#gCardImport)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="home-card-title">
-            4. Nhập /<br>Xuất dữ liệu
-          </div>
+          <span class="sr-only-poster">4. Nhập /<br>Xuất dữ liệu</span>
         </div>
 
         <!-- THẺ 5: Báo cáo sự điều chuyển -->
         <div class="home-function-card" data-home-target="tab-report" role="button" tabindex="0" title="Nhấn để mở Báo cáo sự điều chuyển">
-          <div class="home-card-icon-box">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gCardReport" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#7C3AED"/>
-                  <stop offset="100%" stop-color="#4F46E5"/>
-                </linearGradient>
-              </defs>
-              <rect x="10" y="10" width="44" height="44" rx="10" stroke="url(#gCardReport)" stroke-width="4.5" fill="none"/>
-              <rect x="18" y="34" width="6" height="12" rx="2" fill="url(#gCardReport)"/>
-              <rect x="29" y="26" width="6" height="20" rx="2" fill="url(#gCardReport)"/>
-              <rect x="40" y="18" width="6" height="28" rx="2" fill="url(#gCardReport)"/>
-            </svg>
-          </div>
-          <div class="home-card-title">
-            5. Báo cáo<br>sự điều chuyển
-          </div>
+          <span class="sr-only-poster">5. Báo cáo<br>sự điều chuyển</span>
         </div>
 
         <!-- THẺ 6: Kiểm kê QRCode -->
         <div class="home-function-card" data-home-target="tab-qrcode" role="button" tabindex="0" title="Nhấn để mở Kiểm kê QRCode">
-          <div class="home-card-icon-box">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gCardQr" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#8B5CF6"/>
-                  <stop offset="100%" stop-color="#6366F1"/>
-                </linearGradient>
-              </defs>
-              <path d="M8 20V12C8 9.79 9.79 8 12 8H20" stroke="url(#gCardQr)" stroke-width="4.5" stroke-linecap="round"/>
-              <path d="M44 8H52C54.21 8 56 9.79 56 12V20" stroke="url(#gCardQr)" stroke-width="4.5" stroke-linecap="round"/>
-              <path d="M56 44V52C56 54.21 54.21 56 52 56H44" stroke="url(#gCardQr)" stroke-width="4.5" stroke-linecap="round"/>
-              <path d="M20 56H12C9.79 56 8 54.21 8 52V44" stroke="url(#gCardQr)" stroke-width="4.5" stroke-linecap="round"/>
-              <rect x="18" y="18" width="10" height="10" rx="1.5" stroke="url(#gCardQr)" stroke-width="3" fill="none"/>
-              <rect x="21" y="21" width="4" height="4" fill="url(#gCardQr)"/>
-              <rect x="36" y="18" width="10" height="10" rx="1.5" stroke="url(#gCardQr)" stroke-width="3" fill="none"/>
-              <rect x="39" y="21" width="4" height="4" fill="url(#gCardQr)"/>
-              <rect x="18" y="36" width="10" height="10" rx="1.5" stroke="url(#gCardQr)" stroke-width="3" fill="none"/>
-              <rect x="21" y="39" width="4" height="4" fill="url(#gCardQr)"/>
-              <rect x="36" y="36" width="4" height="4" fill="url(#gCardQr)"/>
-              <rect x="42" y="42" width="4" height="4" fill="url(#gCardQr)"/>
-            </svg>
-          </div>
-          <div class="home-card-title">
-            6. Kiểm kê<br>QRCode
-          </div>
+          <span class="sr-only-poster">6. Kiểm kê<br>QRCode</span>
         </div>
+      </main>
 
-      </div>
-    </main>
-
-    <!-- Bottom Decorative Assets (Laptop and Barcode Scanner from Image 1) -->
-    <footer class="poster-bottom-decor">
-      <!-- Laptop on Left -->
-      <div class="decor-laptop">
-        <svg width="120" height="70" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="25" y="15" width="110" height="65" rx="5" fill="#E9D5FF" stroke="#C084FC" stroke-width="2.5"/>
-          <rect x="33" y="22" width="94" height="50" rx="2" fill="#FAF5FF"/>
-          <path d="M10 82L25 80H135L150 82C154 82.5 155 86 150 87L140 89H20L10 87C5 86 6 82.5 10 82Z" fill="#C084FC"/>
-          <line x1="68" y1="83" x2="92" y2="83" stroke="#A855F7" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <!-- Barcode scanner + Clipboard on Right -->
-      <div class="decor-scanner">
-        <svg width="120" height="70" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="20" y="20" width="55" height="70" rx="4" fill="#FFFFFF" stroke="#C084FC" stroke-width="2"/>
-          <rect x="35" y="15" width="25" height="10" rx="3" fill="#A855F7"/>
-          <rect x="30" y="35" width="35" height="35" rx="2" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="2 2"/>
-          <path d="M100 45C100 38 108 34 118 36L142 42C148 44 150 50 148 55L142 68L122 62L124 88H112L110 60L100 55V45Z" fill="#C084FC" stroke="#7C3AED" stroke-width="2"/>
-        </svg>
-      </div>
-    </footer>
-
+    </div>
   </div>
 
-
-  <!-- ========================================================================
-       2. GIAO DIỆN LÀM VIỆC BÊN TRONG (INTERNAL WORKSPACE VIEW — ẢNH 2)
-       ======================================================================== -->
   <div id="internalWorkspaceView" class="internal-workspace-view" style="display: none;">
     
     <!-- Top Header Bar -->
