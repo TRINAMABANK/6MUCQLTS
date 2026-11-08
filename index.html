@@ -3621,6 +3621,9 @@
 /* ==========================================================================
    1. MÀN HÌNH CHÍNH POSTER TRANG CHỦ (CHUẨN 100% THEO ẢNH THIẾT KẾ)
    ========================================================================== */
+/* ==========================================================================
+   1. MÀN HÌNH CHÍNH POSTER TRANG CHỦ (CHỐNG LỆCH ZOOM IN / ZOOM OUT 100%)
+   ========================================================================== */
 .home-poster-view {
   min-height: 100vh;
   width: 100%;
@@ -3640,23 +3643,42 @@
   position: relative;
   width: 100vw;
   max-width: 1680px;
-  aspect-ratio: 16 / 9;
-  background: url('assets/home_poster_bg.png') no-repeat center center;
-  background-size: contain;
+  margin: 0 auto;
   box-shadow: 0 16px 48px rgba(124, 58, 237, 0.12);
 }
 
-/* 6 Thẻ chức năng tương tác định vị chính xác 100% theo các thẻ trên ảnh */
+.poster-bg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.poster-cards-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 6 Thẻ chức năng là thẻ HTML độc lập - Tỷ lệ khoá chặt theo ảnh, zoom in/out không bao giờ lệch */
 .home-function-card {
   position: absolute;
+  background: #FFFFFF;
+  border: 2px solid #E2D9F3;
   border-radius: 26px;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 12px 14px 10px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
+  user-select: none;
   touch-action: manipulation;
   z-index: 10;
 }
@@ -3664,23 +3686,60 @@
 .home-function-card:hover,
 .home-function-card:focus-visible {
   border-color: #8B5CF6;
-  background: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 16px 36px rgba(124, 58, 237, 0.24), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-  transform: translateY(-4px) scale(1.015);
-  backdrop-filter: brightness(1.02);
+  box-shadow: 0 18px 42px rgba(124, 58, 237, 0.22), 0 4px 12px rgba(124, 58, 237, 0.1);
+  transform: translateY(-5px);
+  background: #FFFFFF;
 }
 
 .home-function-card:active {
   transform: translateY(-1px) scale(0.99);
-  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
 }
 
-.home-function-card[data-home-target="tab-search"]   { left: 14.65%; top: 27.2%; width: 21.00%; height: 23.0%; }
-.home-function-card[data-home-target="tab-transfer"] { left: 39.06%; top: 27.2%; width: 21.88%; height: 23.0%; }
-.home-function-card[data-home-target="tab-minute"]   { left: 64.26%; top: 27.2%; width: 21.09%; height: 23.0%; }
-.home-function-card[data-home-target="tab-import"]   { left: 14.65%; top: 54.7%; width: 21.00%; height: 23.0%; }
-.home-function-card[data-home-target="tab-report"]   { left: 39.06%; top: 54.7%; width: 21.88%; height: 23.0%; }
-.home-function-card[data-home-target="tab-qrcode"]   { left: 64.26%; top: 54.7%; width: 21.09%; height: 23.0%; }
+.home-card-icon-box {
+  width: 50%;
+  max-width: 86px;
+  height: 48%;
+  max-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  transition: transform 0.25s ease;
+}
+
+.home-function-card:hover .home-card-icon-box {
+  transform: scale(1.08);
+}
+
+.home-card-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.home-card-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(12.5px, 1.25vw, 17px);
+  font-weight: 800;
+  color: #1E1B4B;
+  text-align: center;
+  line-height: 1.28;
+  transition: color 0.2s ease;
+}
+
+.home-function-card:hover .home-card-title {
+  color: #6D28D9;
+}
+
+/* Toạ độ phần trăm khớp 100% với phối cảnh đồ hoạ gốc (1024x576) */
+.home-function-card[data-home-target="tab-search"]   { left: 14.65%; top: 27.43%; width: 21.00%; height: 22.92%; }
+.home-function-card[data-home-target="tab-transfer"] { left: 39.06%; top: 27.43%; width: 21.88%; height: 22.92%; }
+.home-function-card[data-home-target="tab-minute"]   { left: 64.26%; top: 27.43%; width: 21.09%; height: 22.92%; }
+.home-function-card[data-home-target="tab-import"]   { left: 14.65%; top: 54.69%; width: 21.00%; height: 22.92%; }
+.home-function-card[data-home-target="tab-report"]   { left: 39.06%; top: 54.69%; width: 21.88%; height: 22.92%; }
+.home-function-card[data-home-target="tab-qrcode"]   { left: 64.26%; top: 54.69%; width: 21.09%; height: 22.92%; }
 
 .sr-only-poster {
   position: absolute;
@@ -4034,7 +4093,10 @@
   <div id="homePosterView" class="home-poster-view">
     <div class="home-poster-stage">
       
-      <!-- Cấu trúc ngữ nghĩa và nhận diện thương hiệu để kiểm thử và trợ năng đạt 100% -->
+      <!-- Ảnh nền chuẩn nét cao đã xử lý mịn không chứa thẻ trùng lặp -->
+      <img src="assets/home_poster_bg_clean.png" class="poster-bg-img" alt="Hệ thống Quản lý Tài sản Nam A Bank" />
+
+      <!-- Cấu trúc ngữ nghĩa thương hiệu phục vụ kiểm thử và tiếp cận đạt 100% -->
       <header class="poster-top-bar sr-only-poster">
         <div class="poster-brand-left">
           <div class="nab-yellow-wave-badge">
@@ -4061,36 +4123,54 @@
         </div>
       </header>
 
-      <!-- 6 Thẻ chức năng tương tác (Click mở trực tiếp vào phân hệ tương ứng) -->
-      <main class="poster-cards-container">
+      <!-- 6 Thẻ phân hệ HTML độc lập (Zoom in / Zoom out giữ vững kích thước, không lệch icon) -->
+      <main class="poster-cards-layer">
         <!-- THẺ 1: Tra cứu & Chọn TS -->
         <div class="home-function-card" data-home-target="tab-search" role="button" tabindex="0" title="Nhấn để mở Tra cứu & Chọn tài sản">
-          <span class="sr-only-poster">1. Tra cứu &amp;<br>Chọn TS</span>
+          <div class="home-card-icon-box">
+            <img src="assets/icon_tab1.png" class="home-card-icon-img" alt="1. Tra cứu & Chọn TS" />
+          </div>
+          <div class="home-card-title">1. Tra cứu &amp;<br>Chọn TS</div>
         </div>
 
         <!-- THẺ 2: Điều chuyển TS (NEW) -->
         <div class="home-function-card" data-home-target="tab-transfer" role="button" tabindex="0" title="Nhấn để mở Cập nhật điều chuyển tài sản">
-          <span class="sr-only-poster">2. Điều chuyển<br>TS (NEW)</span>
+          <div class="home-card-icon-box">
+            <img src="assets/icon_tab2.png" class="home-card-icon-img" alt="2. Điều chuyển TS (NEW)" />
+          </div>
+          <div class="home-card-title">2. Điều chuyển<br>TS (NEW)</div>
         </div>
 
         <!-- THẺ 3: Biên bản điều chuyển A4 -->
         <div class="home-function-card" data-home-target="tab-minute" role="button" tabindex="0" title="Nhấn để mở Biên bản điều chuyển A4">
-          <span class="sr-only-poster">3. Biên bản<br>điều chuyển A4</span>
+          <div class="home-card-icon-box">
+            <img src="assets/icon_tab3.png" class="home-card-icon-img" alt="3. Biên bản điều chuyển A4" />
+          </div>
+          <div class="home-card-title">3. Biên bản<br>điều chuyển A4</div>
         </div>
 
         <!-- THẺ 4: Nhập / Xuất dữ liệu -->
         <div class="home-function-card" data-home-target="tab-import" role="button" tabindex="0" title="Nhấn để mở Nhập / Xuất dữ liệu Excel">
-          <span class="sr-only-poster">4. Nhập /<br>Xuất dữ liệu</span>
+          <div class="home-card-icon-box">
+            <img src="assets/icon_tab4.png" class="home-card-icon-img" alt="4. Nhập / Xuất dữ liệu" />
+          </div>
+          <div class="home-card-title">4. Nhập /<br>Xuất dữ liệu</div>
         </div>
 
         <!-- THẺ 5: Báo cáo sự điều chuyển -->
         <div class="home-function-card" data-home-target="tab-report" role="button" tabindex="0" title="Nhấn để mở Báo cáo sự điều chuyển">
-          <span class="sr-only-poster">5. Báo cáo<br>sự điều chuyển</span>
+          <div class="home-card-icon-box">
+            <img src="assets/icon_tab5.png" class="home-card-icon-img" alt="5. Báo cáo sự điều chuyển" />
+          </div>
+          <div class="home-card-title">5. Báo cáo<br>sự điều chuyển</div>
         </div>
 
         <!-- THẺ 6: Kiểm kê QRCode -->
         <div class="home-function-card" data-home-target="tab-qrcode" role="button" tabindex="0" title="Nhấn để mở Kiểm kê QRCode">
-          <span class="sr-only-poster">6. Kiểm kê<br>QRCode</span>
+          <div class="home-card-icon-box">
+            <img src="assets/icon_tab6.png" class="home-card-icon-img" alt="6. Kiểm kê QRCode" />
+          </div>
+          <div class="home-card-title">6. Kiểm kê<br>QRCode</div>
         </div>
       </main>
 
