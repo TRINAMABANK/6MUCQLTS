@@ -2,7 +2,11 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#7C3AED">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <title>Hệ thống Tra cứu & Điều chuyển Tài sản | TCloud 2-Column Dashboard</title>
   
   <!-- Favicon -->
@@ -4014,30 +4018,346 @@
   }
 }
 
-@media (max-width: 768px) {
-  .home-poster-view {
-    padding: 16px 18px 24px;
-  }
-  .poster-top-bar {
-    flex-direction: column;
-    gap: 16px;
-  }
-  .poster-main-title {
-    font-size: 24px;
-  }
-  .poster-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .workspace-horizontal-tabs-nav {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 12px 16px;
-    gap: 10px;
-  }
-  .workspace-main-content {
-    padding: 0 16px 24px;
-  }
-}
+
+    /* ==========================================================================
+       CHUYÊN BIỆT TỐI ƯU HÓA TRẢI NGHIỆM ĐIỆN THOẠI (MOBILE RESPONSIVE & UX)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      /* 1. Màn hình trang chủ Poster trên điện thoại: Bố cục dọc hiện đại, không dẹt méo */
+      .home-poster-view {
+        min-height: 100vh !important;
+        padding: 20px 14px 36px !important;
+        background: linear-gradient(180deg, #F9F5FF 0%, #EDE9FE 100%) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        overflow-y: auto !important;
+        justify-content: flex-start !important;
+      }
+
+      .home-poster-stage {
+        width: 100% !important;
+        max-width: 480px !important;
+        box-shadow: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        position: relative !important;
+      }
+
+      /* Ẩn ảnh nền ngang 16:9 trên điện thoại để dùng nền chuyển sắc mượt mà */
+      .home-poster-stage .poster-bg-img {
+        display: none !important;
+      }
+
+      /* Nhận diện thương hiệu Nam A Bank nổi bật trên đầu trang chủ điện thoại */
+      .poster-top-bar.sr-only-poster {
+        position: static !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        clip: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-bottom: 20px !important;
+        text-align: center !important;
+      }
+
+      .poster-brand-left {
+        display: flex !important;
+        justify-content: center !important;
+      }
+
+      .nab-yellow-wave-badge {
+        background: #FFD200 !important;
+        border-radius: 24px !important;
+        padding: 6px 20px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        box-shadow: 0 4px 12px rgba(255, 210, 0, 0.35) !important;
+      }
+
+      .nab-brand-title-blue {
+        color: #003B7A !important;
+        font-weight: 900 !important;
+        font-size: 14.5px !important;
+        letter-spacing: 0.5px !important;
+      }
+
+      .poster-main-title {
+        font-size: 20px !important;
+        font-weight: 900 !important;
+        color: #1E1B4B !important;
+        margin: 4px 0 6px 0 !important;
+        line-height: 1.25 !important;
+        text-align: center !important;
+      }
+
+      .poster-subtitle-pill {
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 1.5px solid #DDD6FE !important;
+        border-radius: 20px !important;
+        padding: 5px 16px !important;
+        font-size: 11.5px !important;
+        font-weight: 700 !important;
+        color: #6D28D9 !important;
+        display: inline-block !important;
+        box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08) !important;
+      }
+
+      .poster-right-graphic {
+        display: none !important;
+      }
+
+      /* 6 Thẻ phân hệ thành lưới 2 cột ngón tay chạm chuẩn Touch UI */
+      .poster-cards-layer {
+        position: static !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .home-function-card {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 120px !important;
+        padding: 16px 10px 14px !important;
+        border-radius: 20px !important;
+        border: 1.5px solid #E2D9F3 !important;
+        background: #FFFFFF !important;
+        box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        touch-action: manipulation !important;
+      }
+
+      .home-function-card:active {
+        transform: scale(0.96) !important;
+        background: #F5EEFF !important;
+        border-color: #8B5CF6 !important;
+      }
+
+      .home-card-icon-box {
+        width: 48px !important;
+        height: 48px !important;
+        max-width: 48px !important;
+        max-height: 48px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .home-card-title {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+        font-weight: 700 !important;
+      }
+
+      /* 2. Header Workspace trên điện thoại: Gọn gàng 48px */
+      .workspace-top-header {
+        padding: 8px 12px !important;
+        gap: 8px !important;
+      }
+
+      .workspace-brand-left {
+        gap: 8px !important;
+        flex: 1 !important;
+        min-width: 0 !important;
+      }
+
+      .workspace-header-title {
+        font-size: 12.5px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .workspace-header-right {
+        gap: 6px !important;
+      }
+
+      .btn-return-home {
+        padding: 5px 10px !important;
+        font-size: 11.5px !important;
+        gap: 4px !important;
+        border-radius: 16px !important;
+      }
+
+      .header-user-profile-pill .user-pill-name {
+        display: none !important;
+      }
+
+      .header-user-profile-pill {
+        padding: 4px !important;
+        border-radius: 50% !important;
+      }
+
+      .header-divider-v {
+        display: none !important;
+      }
+
+      /* 3. Thanh 6 Tabs: Dạng vuốt ngang ngón cái (Swipeable Tab Bar) */
+      .workspace-horizontal-tabs-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 8px 10px 10px !important;
+        gap: 8px !important;
+        scrollbar-width: none !important;
+      }
+
+      .workspace-horizontal-tabs-nav::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .workspace-horizontal-tabs-nav .tab-nav-btn {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 115px !important;
+        min-height: 46px !important;
+        padding: 6px 12px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        border-radius: 12px !important;
+        touch-action: manipulation !important;
+      }
+
+      .workspace-horizontal-tabs-nav .tab-nav-btn .tab-icon-wrap {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      .workspace-horizontal-tabs-nav .tab-nav-btn .tab-icon-wrap svg {
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .workspace-horizontal-tabs-nav .tab-nav-btn .tab-btn-text {
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        font-weight: 700 !important;
+      }
+
+      .workspace-main-content {
+        padding: 0 8px 24px !important;
+      }
+
+      /* 4. Tab 6: Khung quét camera QRCode tràn ngang & Nút bấm ngón tay */
+      .qr-scanner-viewport {
+        width: 100% !important;
+        min-height: 260px !important;
+        max-height: 360px !important;
+        border-radius: 16px !important;
+      }
+
+      #qrReaderBox {
+        width: 100% !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+      }
+
+      #qrReaderBox video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 16px !important;
+      }
+
+      /* 5. Nút bấm chuẩn Touch UI (tối thiểu 44px) */
+      .btn {
+        min-height: 44px !important;
+        touch-action: manipulation !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* 6. Bộ lọc và tìm kiếm xếp dọc trên điện thoại */
+      .search-filter-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+      }
+
+      .search-input-box {
+        width: 100% !important;
+        min-width: 100% !important;
+      }
+
+      .search-filter-bar select {
+        width: 100% !important;
+        min-width: 100% !important;
+      }
+
+      .search-filter-bar > div {
+        width: 100% !important;
+      }
+
+      /* 7. Bảng tra cứu & dữ liệu cuộn ngang mượt mà với cảm ứng */
+      .table-responsive-box {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        border-radius: 12px !important;
+        max-height: 480px !important;
+      }
+
+      /* 8. Tab 5: 6 thẻ KPI chia 2 cột đều nhau */
+      .rpt-kpi-6cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+
+      .rpt-kpi-pill-card {
+        padding: 10px 12px !important;
+      }
+
+      .rpt-kpi-big-num {
+        font-size: 18px !important;
+      }
+
+      .rpt-kpi-subtitle {
+        font-size: 11px !important;
+      }
+
+      .bi-chart-card {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+
+      .bi-chart-card svg {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* 9. Tab 4: Khối chọn chế độ xếp 1 cột */
+      .upload-mode-options-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* 10. Modal hộp thoại thích ứng tràn rộng màn hình điện thoại */
+      .modal-dialog {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 12px auto !important;
+        padding: 16px !important;
+        border-radius: 18px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+      }
+    }
+
 
 
 /* Status Pill matching Image 1 */
@@ -6044,6 +6364,10 @@
                   <button class="btn btn-gradient" id="btnQrStartCamera" style="flex: 1; min-height: 44px; font-weight: 700;">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                     Mở camera / Scan QR Code
+                  </button>
+                  <button type="button" class="btn btn-secondary" id="btnQrSwitchCamera" style="min-height: 44px; font-weight: 600;" title="Chuyển đổi camera sau / trước trên điện thoại">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0-4.418-3.582-8-8-8s-8 3.582-8 8c0 1.942.697 3.722 1.862 5.112L3.5 19.5 8 18.25l-.25-4.5-1.572 1.572C5.438 13.985 5 12.062 5 10c0-3.866 3.134-7 7-7s7 3.134 7 7-3.134 7-7 7c-1.39 0-2.684-.407-3.771-1.111l-1.472 1.472C8.38 18.397 10.098 19 12 19c4.418 0 8-3.582 8-8z"/></svg>
+                    🔄 Đổi camera
                   </button>
                   <button type="button" class="btn btn-secondary" id="btnSimulateScanQr" style="min-height: 44px; font-weight: 700;" title="Mô phỏng quét mã QR tài sản mẫu để kiểm tra nghiệp vụ">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -13089,6 +13413,18 @@
       }
     }
 
+
+    let currentFacingMode = 'environment'; // Mặc định camera sau cho điện thoại
+
+    async function switchQrCamera() {
+      currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+      if (qrScanningActive) {
+        await stopQrCamera();
+        await startQrScanner();
+      }
+      showToast(`Đã chuyển sang ${currentFacingMode === 'environment' ? 'Camera sau (Ưu tiên quét)' : 'Camera trước'}`, 'info');
+    }
+
     async function startQrScanner() {
       const dept = qrCurrentSession ? (qrCurrentSession.dept || '') : '';
       if (!dept) {
@@ -13131,7 +13467,7 @@
         };
 
         await qrScannerInstance.start(
-          { facingMode: 'environment' },
+          { facingMode: currentFacingMode },
           qrConfig,
           onQrCodeScannedSuccess,
           onQrCodeScanError
@@ -13177,6 +13513,11 @@
     function onQrCodeScannedSuccess(decodedText) {
       if (!decodedText) return;
       const code = String(decodedText).trim();
+
+      // Rung phản hồi xúc giác trên điện thoại khi nhận diện mã thành công
+      if (navigator.vibrate) {
+        try { navigator.vibrate([80]); } catch(e) {}
+      }
 
       if (qrLastScannedCode === code && pendingQrAsset) {
         return;
@@ -13797,6 +14138,9 @@
     }
     if ($('#btnQrStartCamera')) {
       $('#btnQrStartCamera').addEventListener('click', startQrScanner);
+    }
+    if ($('#btnQrSwitchCamera')) {
+      $('#btnQrSwitchCamera').addEventListener('click', switchQrCamera);
     }
     if ($('#btnQrStopCamera')) {
       $('#btnQrStopCamera').addEventListener('click', stopQrCamera);
