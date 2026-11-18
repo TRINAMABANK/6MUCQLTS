@@ -4026,23 +4026,33 @@
       /* 1. Màn hình trang chủ Poster trên điện thoại: Bố cục dọc hiện đại, không dẹt méo */
       .home-poster-view {
         min-height: 100vh !important;
-        padding: 20px 14px 36px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 16px 12px 32px !important;
         background: linear-gradient(180deg, #F9F5FF 0%, #EDE9FE 100%) !important;
-        display: flex !important;
+        display: flex;
         flex-direction: column !important;
         align-items: center !important;
+        overflow-x: hidden !important;
         overflow-y: auto !important;
         justify-content: flex-start !important;
+        box-sizing: border-box !important;
+      }
+
+      .home-poster-view[style*="none"] {
+        display: none !important;
       }
 
       .home-poster-stage {
         width: 100% !important;
-        max-width: 480px !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
         box-shadow: none !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         position: relative !important;
+        box-sizing: border-box !important;
       }
 
       /* Ẩn ảnh nền ngang 16:9 trên điện thoại để dùng nền chuyển sắc mượt mà */
@@ -4062,8 +4072,9 @@
         flex-direction: column !important;
         align-items: center !important;
         gap: 8px !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 16px !important;
         text-align: center !important;
+        box-sizing: border-box !important;
       }
 
       .poster-brand-left {
@@ -4083,12 +4094,12 @@
       .nab-brand-title-blue {
         color: #003B7A !important;
         font-weight: 900 !important;
-        font-size: 14.5px !important;
+        font-size: 14px !important;
         letter-spacing: 0.5px !important;
       }
 
       .poster-main-title {
-        font-size: 20px !important;
+        font-size: 19px !important;
         font-weight: 900 !important;
         color: #1E1B4B !important;
         margin: 4px 0 6px 0 !important;
@@ -4100,8 +4111,8 @@
         background: rgba(255, 255, 255, 0.95) !important;
         border: 1.5px solid #DDD6FE !important;
         border-radius: 20px !important;
-        padding: 5px 16px !important;
-        font-size: 11.5px !important;
+        padding: 5px 14px !important;
+        font-size: 11px !important;
         font-weight: 700 !important;
         color: #6D28D9 !important;
         display: inline-block !important;
@@ -4117,29 +4128,36 @@
         position: static !important;
         display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 12px !important;
+        gap: 10px !important;
         width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
         height: auto !important;
+        box-sizing: border-box !important;
       }
 
-      .home-function-card {
+      .home-function-card,
+      .home-function-card[data-home-target] {
         position: static !important;
         left: auto !important;
         top: auto !important;
         width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
         height: auto !important;
-        min-height: 120px !important;
-        padding: 16px 10px 14px !important;
-        border-radius: 20px !important;
+        min-height: 115px !important;
+        padding: 14px 6px 12px !important;
+        border-radius: 18px !important;
         border: 1.5px solid #E2D9F3 !important;
         background: #FFFFFF !important;
-        box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08) !important;
+        box-shadow: 0 4px 14px rgba(124, 58, 237, 0.08) !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
         touch-action: manipulation !important;
+        box-sizing: border-box !important;
       }
 
       .home-function-card:active {
@@ -14429,7 +14447,9 @@
       if (!poster || !workspace) return;
 
       poster.style.display = 'none';
+      poster.style.setProperty('display', 'none', 'important');
       workspace.style.display = 'flex';
+      workspace.style.setProperty('display', 'flex', 'important');
       workspace.style.opacity = '1';
       
       switchTab(targetTabId || 'tab-search');
@@ -14463,7 +14483,9 @@
       
       setTimeout(() => {
         workspace.style.display = 'none';
+        workspace.style.setProperty('display', 'none', 'important');
         poster.style.display = 'flex';
+        poster.style.setProperty('display', 'flex', 'important');
         poster.style.opacity = '0';
         poster.style.transform = 'scale(1)';
         
@@ -14473,6 +14495,8 @@
         }, 30);
       }, 200);
     }
+    window.openWorkspaceTab = openWorkspaceTab;
+    window.showHomePoster = showHomePoster;
 
     // 3. Gắn sự kiện cho 6 thẻ chức năng ở màn hình Poster
     document.querySelectorAll('.home-function-card').forEach(card => {
